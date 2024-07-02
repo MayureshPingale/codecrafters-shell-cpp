@@ -1,13 +1,19 @@
 #include <iostream>
+using namespace::std;
 
 int main() {
   // Flush after every std::cout / std:cerr
-  std::cout << std::unitbuf;
-  std::cerr << std::unitbuf;
+  cout << std::unitbuf;
+  cerr << std::unitbuf;
+  string commandNotFoundError(": command not found");
 
   // Uncomment this block to pass the first stage
-  std::cout << "$ ";
+  while (true){
+      cout << "$ ";
+      string input;
+      getline(std::cin, input);
   
-  std::string input;
-  std::getline(std::cin, input);
+      cout << input << commandNotFoundError;
+      cout<<"\n";
+  }
 }
