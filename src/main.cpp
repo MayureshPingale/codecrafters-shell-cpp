@@ -20,6 +20,9 @@ int main() {
       if(tokens[0].compare("exit") == 0) {
         exit(0);
       }
+      else if(tokens[0].compare("echo") == 0) {
+        cout << input.substr(5);
+      }
       else{
         cout << input << commandNotFoundError;
       }
