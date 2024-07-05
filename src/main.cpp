@@ -6,6 +6,7 @@ using namespace::std;
 
 vector<string> extractTokens(string s);
 string exec(const char* cmd); 
+string get_path(std::string command);
 
 int main() {
   // Flush after every std::cout / std:cerr
@@ -85,10 +86,10 @@ string exec(const char* cmd) {
     return result;
 }
 
-std::string get_path(std::string command){
-    std::string path_env = std::getenv("PATH");
-    std::stringstream ss(path_env);
-    std::string path;
+string get_path(string command){
+    string path_env = std::getenv("PATH");
+    stringstream ss(path_env);
+    string path;
     while(!ss.eof()){
         getline(ss, path, ':');
         string abs_path = path + '/' + command;
