@@ -14,7 +14,7 @@ int main() {
   cerr << std::unitbuf;
   string commandNotFoundError(": command not found");
 
-  set<string> validCommands({"echo", "exit", "type", "pwd"});
+  set<string> validCommands({"echo", "exit", "type", "pwd", "cd"});
 
   // Uncomment this block to pass the first stage
   while (true){
@@ -51,6 +51,14 @@ int main() {
       }
       else if(tokens[0].compare("pwd")  == 0) {
           cout << string(filesystem::current_path());
+      }
+      else if(tokens[0].compare("cd") == 0) {
+          if(filesystem::exists(tokens[1])) {
+            filesystem::current_path(filesystem::system_complete( filesystem::path( tokens[1]) ));    
+          }
+          else{
+              cout << "cd: " << tokens[1] << ": No such file or directory";
+          }
       }
       else{
           std::string path = get_path(tokens[0]);
