@@ -49,6 +49,9 @@ int main() {
           }
         }
       }
+      else if(tokens[0].compare("pwd")  == 0) {
+          cout << filesystem::current_path();
+      }
       else{
           std::string path = get_path(tokens[0]);
 
