@@ -14,7 +14,7 @@ int main() {
   cerr << std::unitbuf;
   string commandNotFoundError(": command not found");
 
-  set<string> validCommands({"echo", "exit", "type"});
+  set<string> validCommands({"echo", "exit", "type", "pwd"});
 
   // Uncomment this block to pass the first stage
   while (true){
