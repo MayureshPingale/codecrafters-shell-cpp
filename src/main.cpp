@@ -40,17 +40,31 @@ int main() {
           // string result = exec(tpCommand.c_str());
           // cout << result.substr(0, result.size() - 1); // Removing the extra "\n";
 
-          std::string path = get_path(input);
+          std::string path = get_path(tokens[1]);
           if(path.empty()){
-              std::cout<<tokens[1]<<": not found\n";
+              std::cout<<tokens[1]<<": not found";
           }
           else{
-              std::cout<<input<<" is "<<path<<std::endl;
+              std::cout<<tokens[1]<<" is "<<path;
           }
         }
       }
       else{
-        cout << input << commandNotFoundError;
+          std::string path = get_path(tokens[0]);
+
+          for(int i=1; i < tokens.size(); i++) {
+            path.append(" ").append(tokens[i]);
+          }
+
+          if(path.empty()) {
+            cout << input << commandNotFoundError;
+          }
+          else {
+
+              // cout << path <<"\n";
+              string result = exec(path.c_str());
+              cout << result.substr(0, result.size() - 1); // Removing the extra "\n";
+          }
       }
       
       cout<<"\n";
