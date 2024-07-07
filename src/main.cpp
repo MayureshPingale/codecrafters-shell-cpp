@@ -29,11 +29,11 @@ int main() {
         exit(0);
       }
       else if(tokens[0].compare("echo") == 0) {
-        cout << input.substr(5);
+        cout << input.substr(5) << "\n";
       }
       else if(tokens[0].compare("type") == 0) {
         if(validCommands.find(tokens[1]) != validCommands.end()) {
-          cout<< tokens[1] <<" is a shell builtin";
+          cout<< tokens[1] <<" is a shell builtin\n";
         }
         else{
           // string tpCommand = "type "+ tokens[1]; 
@@ -42,22 +42,22 @@ int main() {
 
           std::string path = get_path(tokens[1]);
           if(path.empty()){
-              std::cout<<tokens[1]<<": not found";
+              std::cout<<tokens[1]<<": not found\n";
           }
           else{
-              std::cout<<tokens[1]<<" is "<<path;
+              std::cout<<tokens[1]<<" is "<<path <<"\n";
           }
         }
       }
       else if(tokens[0].compare("pwd")  == 0) {
-          cout << string(filesystem::current_path());
+          cout << string(filesystem::current_path()) <<"\n";
       }
       else if(tokens[0].compare("cd") == 0) {
           if(filesystem::exists(tokens[1])) {
             filesystem::current_path(filesystem::path( tokens[1]));    
           }
           else{
-              cout << "cd: " << tokens[1] << ": No such file or directory";
+              cout << "cd: " << tokens[1] << ": No such file or directory" << "\n";
           }
       }
       else{
@@ -68,17 +68,14 @@ int main() {
           }
 
           if(path.empty()) {
-            cout << input << commandNotFoundError;
+            cout << input << commandNotFoundError << "\n";
           }
           else {
-
               // cout << path <<"\n";
               string result = exec(path.c_str());
-              cout << result.substr(0, result.size() - 1); // Removing the extra "\n";
+              cout << result;
           }
       }
-      
-      cout<<"\n";
   }
 }
 
