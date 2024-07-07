@@ -54,7 +54,7 @@ int main() {
       }
       else if(tokens[0].compare("cd") == 0) {
           if(filesystem::exists(tokens[1])) {
-            filesystem::current_path(filesystem::system_complete( filesystem::path( tokens[1]) ));    
+            filesystem::current_path(filesystem::path( tokens[1]));    
           }
           else{
               cout << "cd: " << tokens[1] << ": No such file or directory";
