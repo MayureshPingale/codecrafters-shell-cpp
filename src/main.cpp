@@ -53,7 +53,11 @@ int main() {
           cout << string(filesystem::current_path()) <<"\n";
       }
       else if(tokens[0].compare("cd") == 0) {
-          if(filesystem::exists(tokens[1])) {
+          if(tokens[1].compare("~") == 0) {
+              string home = std::getenv("HOME");
+              filesystem::current_path(filesystem::path(home)); 
+          }
+          else if(filesystem::exists(tokens[1])) {
             filesystem::current_path(filesystem::path( tokens[1]));    
           }
           else{
